@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Tweet decoration",
+  "version": "1.1",
+  "description": "decoration tweet. My tweet color is blue and reply tweet color is red.",
+  "icons": {
+           "16": "small_icon16.png",
+           "48": "middle_icon48.png",
+           "128": "large_icon128.png"
+           },
+  "permissions": [
+    "http://twitter.com/*", "https://twitter.com/*"
+  ],
+  "content_scripts": [
+    {
+     "run_at": "document_end",
+     "matches": [
+       "http://twitter.com/*",
+       "https://twitter.com/*"
+     ],
+     "js": [
+       "color.js"
+     ]
+    }
+  ]
+}
