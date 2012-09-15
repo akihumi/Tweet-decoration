@@ -8,7 +8,7 @@ Twitterの公式サイトで自分のツイートやリプをわかりやすく�
 ##How to Install
 Visit the following site.
 
-[https://chrome.google.com/webstore/detail/cdpljleneegadeeohblbojfmicndlcil]
+https://chrome.google.com/webstore/detail/cdpljleneegadeeohblbojfmicndlcil
 
 ##Author
 @akihumi
