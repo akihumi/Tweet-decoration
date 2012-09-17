@@ -1,9 +1,9 @@
 var bgcolor = null;
 var textcolor = null;
-var tweet_data = getClass("js-stream-item stream-item stream-item expanding-stream-item");
-var user = getClass("account-group js-mini-current-user")[0].getAttribute("data-screen-name");
 var tweet_reply = null;
 var tweet_mention = null;
+var tweet_data = null;
+var user = getClass("account-group js-mini-current-user")[0].getAttribute("data-screen-name");
 
 chrome.extension.sendRequest({action : "get"}, function(response){
     bgcolor = response.bgcolor;
@@ -11,6 +11,7 @@ chrome.extension.sendRequest({action : "get"}, function(response){
     init();
 });
 function init(){
+    tweet_data = getClass("js-stream-item stream-item stream-item expanding-stream-item");
     decoration(tweet_data);
     if(top.location.pathname == "/i/connect"){
         tweet_reply = getClass("js-stream-item stream-item stream-item js-activity js-activity-reply");
