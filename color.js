@@ -5,11 +5,13 @@ var tweet_mention = null;
 var tweet_data = null;
 var user = getClass("account-group js-mini-current-user")[0].getAttribute("data-screen-name");
 
+// background.htmlと通信して色の情報を取ってくる
 chrome.extension.sendRequest({action : "get"}, function(response){
     bgcolor = response.bgcolor;
     textcolor = response.textcolor;
     init();
 });
+
 function init(){
     tweet_data = getClass("js-stream-item stream-item stream-item expanding-stream-item");
     decoration(tweet_data);
@@ -20,17 +22,15 @@ function init(){
         decoration(tweet_mention);
     }
 }
-document.getElementById("timeline").onclick = function(){
-    setTimeout(function(){
+// 要素が挿入する度にイベントを発生させる。非推奨らしい…
+var timer = 0;
+document.addEventListener('DOMNodeInserted', function() {
+    if(timer) return;
+    timer = setTimeout(function() {
         decoration(tweet_data);
         decorateEventpage();
-    }, 0);
-}
-addEventListener("scroll", function(e){
-    if(document.body.scrollTop % 1000 >= 800){
-        decoration(tweet_data);
-        decorateEventpage();
-    }
+        timer = 0;
+    }, 30);
 }, false);
 
 function decoration(data){
