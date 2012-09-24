@@ -1,10 +1,13 @@
 window.onload = init;
 
+// 色の情報の初期化
 function init() {
     localStorage["my tweet color"] = localStorage["my tweet color"] || "#b0ffff";
     localStorage["reply tweet color"] = localStorage["reply tweet color"] || "#ffe4e1";
     localStorage["my tweet text color"] = localStorage["my tweet text color"] || "#000000";
     localStorage["reply tweet text color"] = localStorage["reply tweet text color"] || "#000000";
+
+// リクエストを受け取ると色の情報をかえす
     chrome.extension.onRequest.addListener(function(request, sender, sendResponse){
          if(request.action == "get"){
             var color = {mytweet: "", reply: ""};

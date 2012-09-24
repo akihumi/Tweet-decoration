@@ -1,6 +1,5 @@
 window.onload = init;
 var predata = "";
-
 function init(){
     initcolor("my tweet color", "#b0ffff");
     initcolor("my tweet text color", "#000000");
@@ -68,4 +67,5 @@ function defaultColor(){
     initcolor("my tweet text color", "#000000");
     initcolor("reply tweet color", "#ffe4e1");
     initcolor("reply tweet text color", "#000000");
+    save_option();
 }
