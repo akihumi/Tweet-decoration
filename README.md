@@ -16,6 +16,7 @@ https://chrome.google.com/webstore/detail/cdpljleneegadeeohblbojfmicndlcil
 @akihumi
 
 ##License
+[MIT License]
 
 Copyright (c) 2012 Akihumi Tamashiro
 
