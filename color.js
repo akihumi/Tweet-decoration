@@ -28,7 +28,10 @@ document.addEventListener('DOMNodeInserted', function() {
     if(timer) return;
     timer = setTimeout(function() {
         decoration(tweet_data);
-        decorateEventpage();
+        if(top.location.pathname == "/i/connect"){
+            decoration(tweet_reply);
+            decoration(tweet_mention);
+        }
         timer = 0;
     }, 30);
 }, false);
@@ -47,12 +50,7 @@ function decoration(data){
         }
     }
 }
-function decorateEventpage(){
-    if(top.location.pathname == "/i/connect"){
-        decoration(tweet_reply);
-        decoration(tweet_mention);
-    }
-}
+
 function getClass(name){
     return document.getElementsByClassName(name);
 }
