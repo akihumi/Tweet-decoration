@@ -20,21 +20,22 @@ function init(){
         tweet_mention = document.getElementsByClassName('js-stream-item stream-item stream-item js-activity js-activity-mention');
         decoration(tweet_reply);
         decoration(tweet_mention);
+        // 要素が挿入する度にイベントを発生させる。非推奨らしい…
+        var timer = 0;
+        document.addEventListener('DOMNodeInserted', function() {
+            if(timer) return;
+            timer = setTimeout(function() {
+            decoration(tweet_data);
+            if(top.location.pathname == "/i/connect"){
+                decoration(tweet_reply);
+                decoration(tweet_mention);
+            }
+            timer = 0;
+            }, 30);
+        }, false);
     }
 }
-// 要素が挿入する度にイベントを発生させる。非推奨らしい…
-var timer = 0;
-document.addEventListener('DOMNodeInserted', function() {
-    if(timer) return;
-    timer = setTimeout(function() {
-        decoration(tweet_data);
-        if(top.location.pathname == "/i/connect"){
-            decoration(tweet_reply);
-            decoration(tweet_mention);
-        }
-        timer = 0;
-    }, 30);
-}, false);
+
 
 function decoration(data){
     for(var i = 0; i < data.length; i++){
