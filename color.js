@@ -3,7 +3,7 @@ var textcolor = null;
 var tweet_reply = null;
 var tweet_mention = null;
 var tweet_data = null;
-var user = getClass("account-group js-mini-current-user")[0].getAttribute("data-screen-name");
+var user = getClass('account-group js-mini-current-user')[0].getAttribute('data-screen-name');
 
 // background.htmlと通信して色の情報を取ってくる
 chrome.extension.sendRequest({action : "get"}, function(response){
@@ -13,11 +13,11 @@ chrome.extension.sendRequest({action : "get"}, function(response){
 });
 
 function init(){
-    tweet_data = getClass("js-stream-item stream-item stream-item expanding-stream-item");
+    tweet_data = getClass('js-stream-item stream-item stream-item expanding-stream-item');
     decoration(tweet_data);
     if(top.location.pathname == "/i/connect"){
-        tweet_reply = getClass("js-stream-item stream-item stream-item js-activity js-activity-reply");
-        tweet_mention = getClass("js-stream-item stream-item stream-item js-activity js-activity-mention");
+        tweet_reply = document.getElementsByClassName('js-stream-item stream-item stream-item js-activity js-activity-reply');
+        tweet_mention = document.getElementsByClassName('js-stream-item stream-item stream-item js-activity js-activity-mention');
         decoration(tweet_reply);
         decoration(tweet_mention);
     }
@@ -35,8 +35,8 @@ document.addEventListener('DOMNodeInserted', function() {
 
 function decoration(data){
     for(var i = 0; i < data.length; i++){
-        var tweet_user = data[i].getElementsByClassName("tweet original-tweet js-stream-tweet js-actionable-tweet js-hover js-profile-popup-actionable js-original-tweet")[0].getAttribute("data-screen-name");
-        var text = data[i].getElementsByClassName("js-tweet-text")[0];
+        var tweet_user = data[i].getElementsByClassName('tweet original-tweet js-stream-tweet js-actionable-tweet js-profile-popup-actionable js-original-tweet')[0].getAttribute('data-screen-name');
+        var text = data[i].getElementsByClassName('js-tweet-text')[0];
         if(text.innerText.indexOf("@" + user) >= 0){
             data[i].style.backgroundColor = bgcolor["reply"];
             data[i].style.color = textcolor["reply"];
